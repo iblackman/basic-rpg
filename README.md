@@ -3,7 +3,7 @@ Unity 5 rpg game
 
 ## Config
 * Open Unity 5
-* Import package `AxeyWorks` in the asset store
+* Import package `AxeyWorks` in the asset store, [link](https://www.assetstore.unity3d.com/en/#!/content/58821)
   
 After that you are ready to go, just open the scene `main` inside the folder `Assests/_scenes/`
 
