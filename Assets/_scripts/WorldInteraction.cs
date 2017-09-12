@@ -22,6 +22,9 @@ public class WorldInteraction : MonoBehaviour {
 
     void GetInteraction()
     {
+        //hide dialogueSystem if there is a new Interation
+        DialogueSystem.Instance.dialoguePanel.SetActive(false);
+
         Ray interactionRay = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit interactionInfo;
         if (Physics.Raycast(interactionRay, out interactionInfo, Mathf.Infinity))
