@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 
 public class DialogueSystem : MonoBehaviour {
@@ -34,7 +33,7 @@ public class DialogueSystem : MonoBehaviour {
             Instance = this;
         }
 	}
-
+    //create new dialogue
     public void AddNewDialogue(string[] lines, string NPCName)
     {
         if (lines.Length > 0)
@@ -45,11 +44,10 @@ public class DialogueSystem : MonoBehaviour {
             //add lines
             dialogueLines = new List<string>(lines.Length);
             dialogueLines.AddRange(lines);
-            Debug.Log(dialogueLines.Count);
             CreateDialogue();
         }
     }
-
+    //set up the new dialogue panel
     public void CreateDialogue()
     {
         dialogueText.text = dialogueLines[dialogueIndex];
@@ -58,7 +56,7 @@ public class DialogueSystem : MonoBehaviour {
         //display dialog
         dialoguePanel.SetActive(true);
     }
-
+    //iterate over messages in dialogue
     public void ContinueDialogue()
     {   
         dialogueIndex++;
@@ -72,7 +70,7 @@ public class DialogueSystem : MonoBehaviour {
             dialoguePanel.SetActive(false);
         }
     }
-
+    //change button text depending on dialogueIndex
     public void ChangeDialogueButtonText()
     {
         if (dialogueIndex == dialogueLines.Count - 1)
