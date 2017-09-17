@@ -22,9 +22,9 @@ GameObject:
   - component: {fileID: 33543786788702728}
   - component: {fileID: 65103492336936986}
   - component: {fileID: 23319396132792164}
+  - component: {fileID: 114380847821896170}
   - component: {fileID: 95676713757345214}
   - component: {fileID: 54981321866399874}
-  - component: {fileID: 114380847821896170}
   m_Layer: 0
   m_Name: Basic_Staff
   m_TagString: Untagged
@@ -120,7 +120,7 @@ Animator:
   m_GameObject: {fileID: 1049214581172146}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 582d37c052b434c4dac9e501d4998888, type: 2}
+  m_Controller: {fileID: 9100000, guid: f0cbd4c6cf508e944891e43de12d900f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
