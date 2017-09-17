@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBox : MonoBehaviour, IEnemy {
+public class EnemyBox : Interactable, IEnemy {
 
     public CharacterStat EnemyStats;
 

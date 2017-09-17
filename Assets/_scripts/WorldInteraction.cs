@@ -30,7 +30,12 @@ public class WorldInteraction : MonoBehaviour {
         if (Physics.Raycast(interactionRay, out interactionInfo, Mathf.Infinity))
         {
             GameObject interactObject = interactionInfo.collider.gameObject;
-            if (interactObject.tag == "InteractableObject")
+            if(interactObject.tag == "Enemy")
+            {
+                Debug.Log("Interacting with Enemy");
+                interactObject.GetComponent<Interactable>().MoveToInteraction(playerAgent);
+            }
+            else if (interactObject.tag == "InteractableObject")
             {
                 interactObject.GetComponent<Interactable>().MoveToInteraction(playerAgent);
             }

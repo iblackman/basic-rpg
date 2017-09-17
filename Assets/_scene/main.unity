@@ -855,6 +855,7 @@ GameObject:
   - component: {fileID: 425392940}
   - component: {fileID: 425392942}
   - component: {fileID: 425392941}
+  - component: {fileID: 425392943}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -948,6 +949,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerWeaponController: {fileID: 0}
+  consumableController: {fileID: 0}
+--- !u!114 &425392943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 425392936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2774eec49e25ba444bb335b5a6df66f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &429169948 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100008, guid: 6fc44b1433b649546802219f8c93c5fd, type: 3}
@@ -1691,8 +1704,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 728757297}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.74, y: 1.03, z: 2.84}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 1.74, y: 0.856, z: 2.953}
+  m_LocalScale: {x: 0.54559076, y: 0.5455907, z: 0.5455907}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 8
@@ -1708,6 +1721,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f445f2f8cb7249b40a5b7320ae2c27de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DialogueName: 
+  dialogue: []
+  stopDistanceMultiplier: 4
   EnemyStats: {fileID: 0}
   maxHealth: 10
 --- !u!1 &866418025
