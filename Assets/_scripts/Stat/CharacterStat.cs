@@ -13,12 +13,12 @@ public class CharacterStat : MonoBehaviour {
 
     void Start()
     {
-        stats.Add(Stats.getAtkBaseStat(atk));
-        stats.Add(Stats.getDefBaseStat(def));
-        stats.Add(Stats.getVitBaseStat(vit));
-        stats.Add(Stats.getAgiBaseStat(agi));
+        stats.Add(StatsRef.GetAtkBaseStat(atk));
+        stats.Add(StatsRef.GetDefBaseStat(def));
+        stats.Add(StatsRef.GetVitBaseStat(vit));
+        stats.Add(StatsRef.GetAgiBaseStat(agi));
         //stats["atk"].AddStatBonus(new StatBonus(1));
-        Debug.Log(stats.Find(x => x.StatName == Stats.getAtkName()));
+        Debug.Log(stats.Find(x => x.StatName == StatsRef.GetAtkName()) + "\n" + stats.Find(x => x.StatName == StatsRef.GetVitName()));
     }
 
     public void AddStatBonus(List<BaseStat> statBonuses)
@@ -35,5 +35,12 @@ public class CharacterStat : MonoBehaviour {
         {
             stats.Find(x => x.StatName == statB.StatName).RemoveStatBonus(new StatBonus(statB.CalculateStatFinalValue()));
         }
+    }
+
+    public float GetHealth()
+    {
+        Debug.Log("gethealth => "+ stats.Find(x => x.StatName == StatsRef.GetVitName()));
+        int aux = stats.Find(x => x.StatName == StatsRef.GetVitName()).CalculateStatFinalValue();
+        return aux * 10f;
     }
 }

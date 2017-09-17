@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Stats {
+public class StatsRef {
     public enum Ref{atk,def,vit,agi}
 
     static readonly string[,] StatsMap = new string[,]{
@@ -13,62 +13,62 @@ public class Stats {
     };
 
     //ATTACK
-    public static string getAtkName()
+    public static string GetAtkName()
     {
         return StatsMap[(int)Ref.atk,0];
     }
-    public static string getAtkDescription()
+    public static string GetAtkDescription()
     {
         return StatsMap[(int)Ref.atk,1];
     }
 
-    public static BaseStat getAtkBaseStat(int value)
+    public static BaseStat GetAtkBaseStat(int value)
     {
-        return new BaseStat(value, getAtkName(), getAtkDescription());
+        return new BaseStat(value, GetAtkName(), GetAtkDescription());
     }
 
     //DEFENSE
-    public static string getDefName()
+    public static string GetDefName()
     {
         return StatsMap[(int)Ref.def,0];
     }
-    public static string getDefDescription()
+    public static string GetDefDescription()
     {
         return StatsMap[(int)Ref.def,1];
     }
 
-    public static BaseStat getDefBaseStat(int value)
+    public static BaseStat GetDefBaseStat(int value)
     {
-        return new BaseStat(value, getDefName(), getDefDescription());
+        return new BaseStat(value, GetDefName(), GetDefDescription());
     }
 
     //VITALITY
-    public static string getVitName()
+    public static string GetVitName()
     {
         return StatsMap[(int)Ref.vit,0];
     }
-    public static string getVitDescription()
+    public static string GetVitDescription()
     {
         return StatsMap[(int)Ref.vit,1];
     }
 
-    public static BaseStat getVitBaseStat(int value)
+    public static BaseStat GetVitBaseStat(int value)
     {
-        return new BaseStat(value, getVitName(), getVitDescription());
+        return new BaseStat(value, GetVitName(), GetVitDescription());
     }
 
     //AGILITY
-    public static string getAgiName()
+    public static string GetAgiName()
     {
         return StatsMap[(int)Ref.agi,0];
     }
-    public static string getAgiDescription()
+    public static string GetAgiDescription()
     {
         return StatsMap[(int)Ref.agi,1];
     }
 
-    public static BaseStat getAgiBaseStat(int value)
+    public static BaseStat GetAgiBaseStat(int value)
     {
-        return new BaseStat(value, getAgiName(), getAgiDescription());
+        return new BaseStat(value, GetAgiName(), GetAgiDescription());
     } 
 }

@@ -23,6 +23,18 @@ public class Interactable : MonoBehaviour {
 
     public void Update()
     {
+        //need to check if there is a playerAgent before checking its stoppingDistance
+        if (playerAgent)
+        {
+            //if player interacts with something before reaching destination, cancel interaction
+            //I did this because it was accumulating interactions, and it only showed the first one, not the last.
+            if (playerAgent.stoppingDistance == 0f)
+            {
+                hasInteracted = true;
+            }
+        }
+        
+
         if (playerAgent != null && !playerAgent.pathPending && !hasInteracted)
         {
             if (playerAgent.remainingDistance <= playerAgent.stoppingDistance)

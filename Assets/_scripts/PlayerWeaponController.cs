@@ -7,11 +7,13 @@ public class PlayerWeaponController : MonoBehaviour {
 
     public GameObject EquippedWeapon { get; set; }
 
+    Transform projectileSpawn;
     private IWeapon IWEquipped;
     private CharacterStat characterStat;
 
     void Start()
     {
+        projectileSpawn = transform.Find("ProjectileSpawn");
         characterStat = GetComponent<CharacterStat>();
     }
 
@@ -24,18 +26,47 @@ public class PlayerWeaponController : MonoBehaviour {
             Destroy(playerHand.transform.GetChild(0).gameObject);    
         }
         EquippedWeapon = Instantiate<GameObject>(Resources.Load<GameObject>("weapons/" + itemToEquip.ObjectSlug), 
-            playerHand.transform.position, playerHand.transform.rotation);
+            playerHand.transform.position, playerHand.transform.rotation, playerHand.transform);
         //gets IWeapon from GameObject EquippedWeapon
         IWEquipped = EquippedWeapon.GetComponent<IWeapon>();
+
+        //check if this weapon is a projectile weapon
+        if (EquippedWeapon.GetComponent<IProjectileWeapon>() != null)
+        {
+            EquippedWeapon.GetComponent<IProjectileWeapon>().ProjectileSpawn = projectileSpawn;
+        }
+
         //Atributes stats to IWeapon
         IWEquipped.Stats = itemToEquip.Stats;
-        EquippedWeapon.transform.SetParent(playerHand.transform);
+        //EquippedWeapon.transform.SetParent(playerHand.transform);
         characterStat.AddStatBonus(itemToEquip.Stats);
     }
 
-    public void PerformWeaponAttack()
+    public void Update()
     {
-        IWEquipped.PerformAttack();
+        //check in order to doesnt attack without an element
+        if (EquippedWeapon)
+        {
+            if (Input.GetKeyDown(KeyCode.X))
+            {
+                PerformWeaponBasicAttack();
+            }
+            if (Input.GetKeyDown(KeyCode.Z))
+            {
+                PerformWeaponSecondaryAttack();
+            }
+        }
+        
     }
-	
+
+    public void PerformWeaponBasicAttack()
+    {
+        IWEquipped.PerformBasicAttack();
+    }
+
+    public void PerformWeaponSecondaryAttack()
+    {
+        IWEquipped.PerformSecondaryAttack();
+    }
+
 }

@@ -2,19 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Sword : MonoBehaviour, IWeapon {
+public class Staff : MonoBehaviour, IWeapon, IProjectileWeapon
+{
 
     private Animator animator;
     //public Dictionary<Stats.Ref, BaseStat> Stats { get; set; }
     public List<BaseStat> Stats { get; set; }
 
+    public Transform ProjectileSpawn { get; set; }
+
+    Fireball fireball;
+
     void Start()
     {
+        fireball = Resources.Load<Fireball>("projectiles/Basic_Fireball"); 
         animator = GetComponent<Animator>();
     }
 
     public void PerformBasicAttack()
-    {
+    { 
         animator.SetTrigger("basic_attack");
     }
 
@@ -23,12 +29,9 @@ public class Sword : MonoBehaviour, IWeapon {
         animator.SetTrigger("secondary_attack");
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void CastProjectile()
     {
-        if(other.tag == "Enemy")
-        {
-            int dmg = Stats.Find(x => x.StatName == StatsRef.GetAtkName()).CalculateStatFinalValue();
-            other.GetComponent<EnemyBox>().TakeDamage(dmg);
-        }
+        Fireball fireballInstance = Instantiate<Fireball>(fireball, ProjectileSpawn.position, transform.rotation);
+        fireballInstance.Direction = ProjectileSpawn.forward;
     }
 }
