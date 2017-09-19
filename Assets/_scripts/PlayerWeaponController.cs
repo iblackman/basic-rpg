@@ -22,8 +22,7 @@ public class PlayerWeaponController : MonoBehaviour {
         //check if there is already a weapon equipped
         if (EquippedWeapon != null) 
         {
-            characterStat.RemoveStatBonus(EquippedWeapon.GetComponent<IWeapon>().Stats);
-            Destroy(playerHand.transform.GetChild(0).gameObject);    
+            MoveWeaponToInventory();
         }
         EquippedWeapon = Instantiate<GameObject>(Resources.Load<GameObject>("weapons/" + itemToEquip.ObjectSlug), 
             playerHand.transform.position, playerHand.transform.rotation, playerHand.transform);
@@ -40,6 +39,18 @@ public class PlayerWeaponController : MonoBehaviour {
         IWEquipped.Stats = itemToEquip.Stats;
         //EquippedWeapon.transform.SetParent(playerHand.transform);
         characterStat.AddStatBonus(itemToEquip.Stats);
+    }
+
+    void MoveWeaponToInventory()
+    {
+        //remove stat bonus
+        characterStat.RemoveStatBonus(EquippedWeapon.GetComponent<IWeapon>().Stats);
+        //get weapon object
+        GameObject objectEquipped = playerHand.transform.GetChild(0).gameObject;
+        //destroy object from hand
+        Destroy(objectEquipped);
+        //add same item in inventory (passing the name of the object removing the string '(Clone)'
+        InventoryController.Instance.AddItem(objectEquipped.name.Replace("(Clone)", ""));
     }
 
     public void Update()

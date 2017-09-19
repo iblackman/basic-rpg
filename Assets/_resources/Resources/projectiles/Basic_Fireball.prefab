@@ -110,7 +110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 50
-  maxDistance: 30
+  maxDistance: 20
 --- !u!135 &135080084174768622
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -14,7 +14,6 @@ public class Fireball : MonoBehaviour {
 
     private void Start()
     {
-        Debug.Log("fireball " + GetComponent<Rigidbody>().name);
         Range = maxDistance;
         Damage = 4;
         spawnPosition = transform.position;
@@ -31,7 +30,6 @@ public class Fireball : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Fireball collision");
         if(collision.transform.tag == "Enemy")
         {
             collision.transform.GetComponent<IEnemy>().TakeDamage(Damage);

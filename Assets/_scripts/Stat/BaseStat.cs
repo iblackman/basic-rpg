@@ -18,6 +18,14 @@ public class BaseStat {
         this.StatDescription = statDescription;
     }
 
+    [Newtonsoft.Json.JsonConstructor]
+    public BaseStat(int baseValue, string statName)
+    {
+        this.BonusList = new List<StatBonus>();
+        this.BaseValue = baseValue;
+        this.StatName = statName;
+    }
+
     public void AddStatBonus(StatBonus statBonus)
     {
         this.BonusList.Add(statBonus);
@@ -55,6 +63,6 @@ public class BaseStat {
 
     public override string ToString()
     {
-        return StatName +" = " + CalculateStatFinalValue();
+        return StatName +": " + CalculateStatFinalValue();
     }
   }

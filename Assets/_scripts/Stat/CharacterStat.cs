@@ -18,7 +18,7 @@ public class CharacterStat : MonoBehaviour {
         stats.Add(StatsRef.GetVitBaseStat(vit));
         stats.Add(StatsRef.GetAgiBaseStat(agi));
         //stats["atk"].AddStatBonus(new StatBonus(1));
-        Debug.Log(stats.Find(x => x.StatName == StatsRef.GetAtkName()) + "\n" + stats.Find(x => x.StatName == StatsRef.GetVitName()));
+        //Debug.Log(stats.Find(x => x.StatName == StatsRef.GetAtkName()) + "\n" + stats.Find(x => x.StatName == StatsRef.GetVitName()));
     }
 
     public void AddStatBonus(List<BaseStat> statBonuses)

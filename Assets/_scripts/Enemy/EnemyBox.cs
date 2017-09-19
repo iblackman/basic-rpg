@@ -15,7 +15,6 @@ public class EnemyBox : Interactable, IEnemy {
         EnemyStats = GetComponent<CharacterStat>();
         //currentHealth = EnemyStats.GetHealth();
         currentHealth = maxHealth;
-        Debug.Log("Current health = " + currentHealth);
     }
 
     public void PerformAttack()
