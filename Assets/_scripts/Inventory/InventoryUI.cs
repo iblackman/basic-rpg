@@ -28,7 +28,7 @@ public class InventoryUI : MonoBehaviour {
         InventoryUIItem emptyItem = Instantiate(ItemContainer);
         emptyItem.SetItem(_item);
         emptyItem.transform.SetParent(scrollViewContent);
-        UpdateScrollViewHeight();
+        //UpdateScrollViewHeight();
     }
 
     void UpdateScrollViewHeight()

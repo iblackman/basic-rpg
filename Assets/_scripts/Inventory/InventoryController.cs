@@ -28,15 +28,13 @@ public class InventoryController : MonoBehaviour {
         AddItem("Sword_Basic");
         AddItem("Staff_Basic");
         AddItem("Potion_Health");
-        AddItem("Potion_Health");
-        AddItem("Potion_Health");
-        AddItem("Potion_Health");
     }
 
     public void AddItem(string _itemSlug)
     {
         Item item = ItemDatabase.Instance.GetItem(_itemSlug);
         InventoryItems.Add(item);
+        Debug.Log(item);
         UIEventHandler.ItemAddedToInventory(item);
         Debug.Log("New item added to inventory.\n" + ItemDatabase.Instance.GetItem(_itemSlug));
     }
