@@ -1,0 +1,46 @@
+﻿[
+	{
+		"objectSlug": "Sword_Basic",
+		"itemName": "Basic Sword",
+		"description": "A basic sword.",
+		"itemType": "Weapon",
+		"actionName": "Equip",
+		"itemModifier": 0,
+		"stats": [
+			{
+				"baseValue": 2,
+				"statName": "Attack"
+			},
+			{
+				"baseValue": 4,
+				"statName": "Agility"
+			}
+		]
+	},
+	{
+		"objectSlug": "Staff_Basic",
+		"itemName": "Basic Staff",
+		"description": "A basic staff.",
+		"itemType": "Weapon",
+		"actionName": "Equip",
+		"itemModifier": 0,
+		"stats": [
+			{
+				"baseValue": 1,
+				"statName": "Attack"
+			},
+			{
+				"baseValue": 3,
+				"statName": "Agility"
+			}
+		]
+	},
+	{
+		"objectSlug": "Potion_Health",
+		"itemName": "Health Potion",
+		"description": "A potion to restore health.",
+		"itemType": "Consumable",
+		"actionName": "Use",
+		"itemModifier": 0
+	}
+]
