@@ -12,6 +12,14 @@
 				"statName": "Attack"
 			},
 			{
+				"baseValue": 1,
+				"statName": "Defense"
+			},
+			{
+				"baseValue": 1,
+				"statName": "Vitality"
+			},
+			{
 				"baseValue": 4,
 				"statName": "Agility"
 			}

@@ -7,13 +7,14 @@ public class InventoryUIDetails : MonoBehaviour {
 
     public Item item;
     public Button selectedItemButton, actionButton;
-    public Text itemNameText, itemDescriptionText, actionButtonText;
+    public Text itemNameText, itemDescriptionText, actionButtonText, itemStatsText;
 
     private void Start()
     {
         DisablePanel();
         itemNameText = this.transform.Find("Item_Name").GetComponent<Text>();
         itemDescriptionText = this.transform.Find("Item_Description").GetComponent<Text>();
+        itemStatsText = this.transform.Find("Item_Stats").GetComponentInChildren<Text>();
         actionButton = this.transform.Find("Button_Action").GetComponent<Button>();
         actionButtonText = actionButton.transform.Find("Text").GetComponent<Text>();
     }
@@ -30,6 +31,7 @@ public class InventoryUIDetails : MonoBehaviour {
         itemNameText.text = item.ItemName;
         itemDescriptionText.text = item.Description;
         actionButtonText.text = item.ActionName;
+        itemStatsText.text = item.StatsToString();
         //remove all listerners first, otherwise it would stack a listener every time an item is clicked
         actionButton.onClick.RemoveAllListeners();
         actionButton.onClick.AddListener(OnActionButtonCLick);

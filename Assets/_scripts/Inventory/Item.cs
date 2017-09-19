@@ -35,6 +35,29 @@ public class Item {
         this.ItemModifier = _itemModifier;
     }
 
+    public string StatsToString()
+    {
+        string resp = "";
+        if (Stats != null)
+        {
+            bool even = false;
+            Stats.ForEach(delegate (BaseStat stat)
+            {
+                resp += stat ;
+                if (even)
+                {
+                    resp += "\n";
+                }
+                else
+                {
+                    resp += "\t\t";
+                }
+                even = !even;
+            });
+        }
+        return resp;
+    }
+
     public override string ToString()
     {
         string resp = "";
