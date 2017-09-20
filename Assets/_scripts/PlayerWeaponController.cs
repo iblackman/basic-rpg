@@ -14,7 +14,7 @@ public class PlayerWeaponController : MonoBehaviour {
     void Start()
     {
         projectileSpawn = transform.Find("ProjectileSpawn");
-        characterStat = GetComponent<CharacterStat>();
+        characterStat = GetComponent<Player>().characterStat;
     }
 
     public void EquipWeapon(Item itemToEquip)

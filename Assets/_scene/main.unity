@@ -287,7 +287,7 @@ GameObject:
   - component: {fileID: 167280593}
   - component: {fileID: 167280592}
   - component: {fileID: 167280591}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: player_model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -348,7 +348,7 @@ BoxCollider:
   m_GameObject: {fileID: 167280589}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -981,11 +981,11 @@ GameObject:
   - component: {fileID: 425392937}
   - component: {fileID: 425392938}
   - component: {fileID: 425392939}
-  - component: {fileID: 425392940}
   - component: {fileID: 425392942}
   - component: {fileID: 425392941}
   - component: {fileID: 425392943}
-  m_Layer: 0
+  - component: {fileID: 425392940}
+  m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1017,7 +1017,7 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.38
   m_Speed: 5
-  m_Acceleration: 20
+  m_Acceleration: 30
   avoidancePriority: 50
   m_AngularSpeed: 500
   m_StoppingDistance: 0
@@ -1047,13 +1047,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 425392936}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1578d616c6d5044faf4a37c60cdfc54, type: 3}
+  m_Script: {fileID: 11500000, guid: 745b285eedea79d4fa2f1f8b99af70c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  atk: 3
-  def: 3
-  vit: 3
-  agi: 3
+  maxHealth: 0
+  currentHealth: 0
 --- !u!114 &425392941
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2037,8 +2035,8 @@ GameObject:
   - component: {fileID: 728757302}
   - component: {fileID: 728757301}
   - component: {fileID: 728757300}
-  - component: {fileID: 728757299}
   - component: {fileID: 728757298}
+  - component: {fileID: 728757299}
   - component: {fileID: 728757303}
   m_Layer: 0
   m_Name: EnemyBox
@@ -2047,21 +2045,27 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &728757298
-MonoBehaviour:
+--- !u!195 &728757298
+NavMeshAgent:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 728757297}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1578d616c6d5044faf4a37c60cdfc54, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  atk: 1
-  def: 1
-  vit: 10
-  agi: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3
+  m_Acceleration: 20
+  avoidancePriority: 50
+  m_AngularSpeed: 300
+  m_StoppingDistance: 1
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1
+  m_BaseOffset: 0.5
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!23 &728757299
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2140,8 +2144,13 @@ MonoBehaviour:
   DialogueName: 
   dialogue: []
   stopDistanceMultiplier: 4
-  EnemyStats: {fileID: 0}
+  aggroLayerMask:
+    serializedVersion: 2
+    m_Bits: 256
   maxHealth: 10
+  currentHealth: 0
+  aggroRadius: 10
+  attackCoolDown: 2
 --- !u!1 &849199659
 GameObject:
   m_ObjectHideFlags: 0

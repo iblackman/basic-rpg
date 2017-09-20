@@ -8,18 +8,22 @@
 		"itemModifier": 0,
 		"stats": [
 			{
+				"statType":"Attack",
 				"baseValue": 2,
 				"statName": "Attack"
 			},
 			{
+				"statType":"Defense",
 				"baseValue": 1,
 				"statName": "Defense"
 			},
 			{
+				"statType":"Vitality",
 				"baseValue": 1,
 				"statName": "Vitality"
 			},
 			{
+				"statType":"Agility",
 				"baseValue": 4,
 				"statName": "Agility"
 			}
@@ -34,10 +38,12 @@
 		"itemModifier": 0,
 		"stats": [
 			{
+				"statType":"Attack",
 				"baseValue": 1,
 				"statName": "Attack"
 			},
 			{
+				"statType":"Agility",
 				"baseValue": 3,
 				"statName": "Agility"
 			}

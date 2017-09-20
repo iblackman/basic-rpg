@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 public class Item {
     public enum ItemTypes { Weapon, Consumable}
@@ -10,7 +11,7 @@ public class Item {
     public string ObjectSlug { get; set; }
     public string ItemName { get; set; }
     public string Description { get; set; }
-    [JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    [JsonConverter(typeof(StringEnumConverter))]
     public ItemTypes ItemType { get; set; }
     //button that has the action name
     public string ActionName { get; set; }
