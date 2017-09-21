@@ -41,7 +41,13 @@ After that you are ready to go, just open the scene `main` inside the folder `As
   * Fireball, triggered using staff attacks
   * It is destroyed if it collides to any object (if it is an object with tag `Enemy`, this object takes damage)
   * It is destroyed if reach specif distance (max distante is customizable)
+* Enemy with simple AI
+  * Has a aggro sphere that follows player if it enters in that sphere
+  * Attacks if it is close enough
+  * Stops chasing if player gets outside aggro sphere, and it returns to its original position
+* Beginning of Character UI
 * Added script execution order because it was generating an error (Edit > Project Settings > Script Execution Order)
-  * UIEventHandler > ItemDatabase > InventoryController > others
+  * UIEventHandler > ItemDatabase > InventoryController > Player > PlayerWeaponController > others
+  
 ## Contributions
 If you want to contribute you are welcome to, but if you use a new asset package, add it to the `.gitignore` and in the **Config** part. Otherwise you will add all the assets to the git repository.
