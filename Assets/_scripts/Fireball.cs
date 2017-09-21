@@ -5,17 +5,17 @@ using UnityEngine;
 public class Fireball : MonoBehaviour {
     public Vector3 Direction { get; set; }
     public float Range { get; set; }
-    public int Damage { get; set; }
-
-    public float speed = 50f;
-    public float maxDistance = 30f;
+    public int Damage = 1;
+    [Range(25,80)]
+    public float speed;
+    [Range(5,30)]
+    public float maxDistance;
 
     Vector3 spawnPosition;
 
     private void Start()
     {
         Range = maxDistance;
-        Damage = 4;
         spawnPosition = transform.position;
         GetComponent<Rigidbody>().AddForce(Direction * speed);
     }

@@ -39,13 +39,19 @@ public class CharacterStat {
     
     public float GetHealth()
     {
-        int aux = GetStat(BaseStat.StatTypes.Vitality).CalculateStatFinalValue();
-        return aux * Constants.HEALTH_MULTIPLIER;
+        //Each point of vitality increase health by 10
+        return GetStat(BaseStat.StatTypes.Vitality).CalculateStatFinalValue() * Constants.HEALTH_MULTIPLIER;
     }
 
     public int GetDamage()
     {
         return GetStat(BaseStat.StatTypes.Attack).CalculateStatFinalValue();
+    }
+    
+    public float GetCriticalChance()
+    {
+        //every 5 points of Agility increase crit chance by 1%
+        return GetStat(BaseStat.StatTypes.Agility).CalculateStatFinalValue() * Constants.CRIT_CHANCE_MULTIPLIER;
     }
 }
 

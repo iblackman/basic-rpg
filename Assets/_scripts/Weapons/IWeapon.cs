@@ -4,6 +4,7 @@ using UnityEngine;
 
 public interface IWeapon {
     List<BaseStat> Stats { get; set; }
-    void PerformBasicAttack();
-    void PerformSecondaryAttack();
+    int CurrentDamage { get; set; }
+    void PerformBasicAttack(int _damage);
+    void PerformSecondaryAttack(int _damage);
 }

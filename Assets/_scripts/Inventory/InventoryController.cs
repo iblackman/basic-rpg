@@ -36,7 +36,6 @@ public class InventoryController : MonoBehaviour {
         InventoryItems.Add(item);
         Debug.Log(item);
         UIEventHandler.ItemAddedToInventory(item);
-        Debug.Log("New item added to inventory.\n" + ItemDatabase.Instance.GetItem(_itemSlug));
     }
 
     public void SetItemDetails(Item _item, Button _button)

@@ -72,12 +72,32 @@ public class PlayerWeaponController : MonoBehaviour {
 
     public void PerformWeaponBasicAttack()
     {
-        IWEquipped.PerformBasicAttack();
+        IWEquipped.PerformBasicAttack(CalculateDamage());
     }
 
     public void PerformWeaponSecondaryAttack()
     {
-        IWEquipped.PerformSecondaryAttack();
+        int auxDamage = (int)(CalculateDamage() * .7f);
+        IWEquipped.PerformSecondaryAttack(auxDamage);
     }
 
+    private int CalculateDamage()
+    {
+        int aux = (int)characterStat.GetDamage() / 10;
+        int damage = characterStat.GetDamage() + Random.Range(-aux, aux);
+        damage += CalculateCrit(damage);
+        return damage;
+    }
+
+    private int CalculateCrit(int _damage)
+    {
+        if(Random.value <= characterStat.GetCriticalChance())
+        {
+            return (int) (_damage*Random.Range(.5f,1f));
+        }
+        else
+        {
+            return 0;
+        }
+    }
 }
