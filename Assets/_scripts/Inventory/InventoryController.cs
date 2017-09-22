@@ -4,17 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class InventoryController : MonoBehaviour {
+
+    #region Singleton
     public static InventoryController Instance { get; set; }
-    public PlayerWeaponController playerWeaponController;
-    public ConsumableController consumableController;
-    public InventoryUIDetails inventoryDetailsPanel;
-
-    public List<Item> InventoryItems = new List<Item>();
-
-    void Start()
+    private void Awake()
     {
-        //singleton pattern
-        if(Instance != null && Instance != this)
+        if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
         }
@@ -22,7 +17,18 @@ public class InventoryController : MonoBehaviour {
         {
             Instance = this;
         }
+    }
+    #endregion
 
+    public PlayerWeaponController playerWeaponController;
+    public ConsumableController consumableController;
+    public InventoryUIDetails inventoryDetailsPanel;
+
+    public List<Item> InventoryItems = new List<Item>();
+    public int space = 20;
+
+    void Start()
+    {
         playerWeaponController = GetComponent<PlayerWeaponController>();
         consumableController = GetComponent<ConsumableController>();
         AddItem("Sword_Basic");
@@ -30,12 +36,22 @@ public class InventoryController : MonoBehaviour {
         AddItem("Potion_Health");
     }
 
-    public void AddItem(string _itemSlug)
+    public bool AddItem(string _itemSlug)
     {
-        Item item = ItemDatabase.Instance.GetItem(_itemSlug);
-        InventoryItems.Add(item);
-        Debug.Log(item);
-        UIEventHandler.ItemAddedToInventory(item);
+        if(InventoryItems.Count < space)
+        {
+            Item item = ItemDatabase.Instance.GetItem(_itemSlug);
+            InventoryItems.Add(item);
+            Debug.Log(item);
+            UIEventHandler.ItemAddedToInventory(item);
+            return true;
+        }
+        else
+        {
+            Debug.Log("Counldn't add item, inventory full.");
+            return false;
+        }
+        
     }
 
     public void SetItemDetails(Item _item, Button _button)

@@ -16,7 +16,8 @@ public class EnemyBox : Interactable, IEnemy {
     public float maxHealth; 
     public float currentHealth;
     public float aggroRadius = 10f;
-    public float attackCoolDown = 2f;
+    public float attackSpeed = 2f;
+    private float attackCooldown = 0f;
 
     public void Start()
     {
@@ -29,6 +30,7 @@ public class EnemyBox : Interactable, IEnemy {
     //isnt something that need to happend in the exact moment that it happens, so we can get some performance using FixedUpdate
     void FixedUpdate()
     {
+        
         //create a sphere around the enemy to return all colliders from the layerMask passed
         aggroColliders = Physics.OverlapSphere(transform.position, aggroRadius, aggroLayerMask);
         if (aggroColliders.Length > 0)
@@ -41,8 +43,14 @@ public class EnemyBox : Interactable, IEnemy {
         }
     }
 
+    new void Update()
+    {
+        attackCooldown -= Time.deltaTime;
+    }
+
     public void PerformAttack()
     {
+        //Debug.Log("Enemy attacked "+ DateTime.Now.TimeOfDay.Seconds);
         player.TakeDamage(characterStat.GetDamage());
     }
 
@@ -59,19 +67,23 @@ public class EnemyBox : Interactable, IEnemy {
     {
         this.player = _player;
         navAgent.SetDestination(player.transform.position);
-        //float distanceFromPlayer = (player.transform.position - navAgent.transform.position).magnitude;
         if (navAgent.remainingDistance <= navAgent.stoppingDistance)
         {
-            if (!IsInvoking("PerformAttack"))
+            FaceTarget();
+            if (attackCooldown <= 0f)
             {
-                InvokeRepeating("PerformAttack", .1f, attackCoolDown);
+                PerformAttack();
+                attackCooldown = attackSpeed;
             }
         }
-        else
-        {
-            CancelInvoke("PerformAttack");
-        }
 
+    }
+
+    void FaceTarget()
+    {
+        Vector3 direction = (player.transform.position - transform.position).normalized;
+        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
     }
 
     void StopChasingPlayer()

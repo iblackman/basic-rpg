@@ -1438,6 +1438,7 @@ MonoBehaviour:
   playerWeaponController: {fileID: 0}
   consumableController: {fileID: 0}
   inventoryDetailsPanel: {fileID: 1523192977}
+  space: 20
 --- !u!114 &425392943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2744,7 +2745,7 @@ MonoBehaviour:
   maxHealth: 10
   currentHealth: 0
   aggroRadius: 10
-  attackCoolDown: 2
+  attackSpeed: 2
 --- !u!1 &812708725
 GameObject:
   m_ObjectHideFlags: 0
